@@ -920,29 +920,63 @@ html, body {
   .foot__row { grid-template-columns: 1fr 1fr; gap: 32px; }
   .wall__grid { grid-template-columns: repeat(8, 1fr); }
 
-  /* === topbar SP === */
-  .topbar__inner {
-    padding: 11px 0;
-    gap: 12px;
+  /* === topbar SP luxury === */
+  .topbar {
+    background: color-mix(in oklab, var(--bg) 97%, transparent);
+    border-bottom-color: color-mix(in oklab, var(--terra) 35%, transparent);
   }
-  .brand { font-size: 15px; gap: 8px; }
+  .topbar::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--terra) 40%, var(--terra) 60%, transparent);
+  }
+  .topbar__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0 12px;
+    gap: 10px;
+  }
+  .brand {
+    font-size: 17px;
+    gap: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  .brand::before,
+  .brand::after {
+    content: '';
+    flex: 1;
+    max-width: 48px;
+    height: 1px;
+  }
+  .brand::before {
+    background: linear-gradient(90deg, transparent, var(--terra));
+    margin-right: 14px;
+  }
+  .brand::after {
+    background: linear-gradient(90deg, var(--terra), transparent);
+    margin-left: 14px;
+  }
   .brand__mark { width: 28px; height: 28px; }
   .nav { display: none; }
   .topbar__cta {
-    padding: 8px 14px;
-    font-size: 11.5px;
-    letter-spacing: 0.02em;
+    padding: 9px 28px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    background: var(--terra);
     white-space: nowrap;
   }
+  .topbar__cta:hover { background: var(--terra-deep); }
 }
 
 @media (max-width: 520px) {
   .shell { padding: 0 16px; }
-  .topbar__inner { padding: 10px 0; }
-  .brand span:last-child { font-size: 14px; }
+  .topbar__inner { padding: 12px 0 10px; }
+  .brand { font-size: 16px; }
   .topbar__cta {
-    padding: 7px 12px;
-    font-size: 11px;
+    padding: 9px 24px;
+    font-size: 12px;
   }
   .topbar__cta__long { display: none; }
   .topbar__cta__short { display: inline; }
