@@ -224,21 +224,15 @@ const OrderBox = () => {
 
 // ===== main =====
 const App = () => {
-  const tweaksDefaults = /*EDITMODE-BEGIN*/{
-    "rain": true,
-    "accent": "#c87a3f",
-    "broccoliCount": 60
-  }/*EDITMODE-END*/;
-  const [t, setTweak] = useTweaks(tweaksDefaults);
   const [openVariety, setOpenVariety] = useState(null);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--terra', t.accent);
-  }, [t.accent]);
+    document.documentElement.style.setProperty('--terra', '#c87a3f');
+  }, []);
 
   return (
     <>
-      {t.rain && <BroccoliRain count={t.broccoliCount} />}
+      <BroccoliRain count={20} />
 
       <header className="topbar">
         <div className="shell topbar__inner">
@@ -487,22 +481,6 @@ const App = () => {
       </footer>
 
       {openVariety && <VarietyModal v={openVariety} onClose={() => setOpenVariety(null)} />}
-
-      {/* Tweaks */}
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Atmosphere">
-          <TweakToggle label="🥦 ブロッコリーの雨" value={t.rain} onChange={(v) => setTweak('rain', v)} />
-          <TweakSlider label="降る量" min={20} max={160} step={10} value={t.broccoliCount} onChange={(v) => setTweak('broccoliCount', v)} />
-        </TweakSection>
-        <TweakSection label="Color">
-          <TweakColor
-            label="アクセント"
-            value={t.accent}
-            onChange={(v) => setTweak('accent', v)}
-            options={["#c87a3f", "#b8423a", "#d8a23a", "#7a5a9a", "#3a82a8"]}
-          />
-        </TweakSection>
-      </TweaksPanel>
     </>
   );
 };

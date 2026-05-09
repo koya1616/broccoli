@@ -1,4 +1,7 @@
 .claude/
 .wrangler/
+.git/
+.gitignore
 wrangler.toml
 .assetsignore
+tweaks-panel.jsx
